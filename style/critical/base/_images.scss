@@ -1,0 +1,106 @@
+.album-list,
+.image-gallery {
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+}
+
+.album-list {
+    justify-content: center;
+}
+
+.album-cover {
+
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    border: 1px solid map-get( $colors, "gray-81" );
+
+    .album-cover-text {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+        width: 100%;
+
+        .album-cover-text-inner {
+            padding: 10px;
+            background-color: rgba( 0, 0, 0, 0.6 );
+        }
+
+        color: map-get( $colors, "white" );
+        text-shadow: 1px 1px map-get( $colors, "black" );
+
+        .album-cover-text-date {
+            font-size: 12px;
+        }
+
+        .album-cover-text-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    }
+
+}
+
+.album-header {
+
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 2rem;
+	text-align: center;
+
+    .album-header-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 10rem 0;
+        background-color: rgba( 0, 0, 0, 0.3 );
+    }
+
+    h1, div, p {
+        color: map-get( $colors, "white" );
+        text-shadow: 1px 1px map-get( $colors, "black" );
+    }
+
+    h1 {
+		font-size: 48px;
+		line-height: 1em;
+		margin: 0 0 1rem 0;
+	}
+
+    p {
+        margin: 0;
+    }
+
+}
+
+.image-gallery {
+
+    justify-content: center;
+    align-items: center;
+
+    img {
+        border: 1px solid map-get( $colors, "gray-81" );
+    }
+}
+
+// --- NON-MOBILE --------------------------------------------------------------
+
+@media only screen and (min-width: $breakpoint-desktop) {
+
+    .album-list,
+    .image-gallery {
+        flex-direction: row;
+    }
+
+    .album-cover {
+        margin: initial;
+    }
+
+}

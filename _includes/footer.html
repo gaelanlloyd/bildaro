@@ -1,0 +1,13 @@
+<footer>
+
+    {% if page.id %}
+        <div><a class="button" href="/">Back to albums</a></div>
+    {% endif %}
+
+    <div>Photography &copy; {{ 'now' | date: "%Y" }} {{ site.author }}</div>
+
+    <div>Created using <a href="{{ site.project_url }}">{{ site.project_name }}</a></div>
+
+</footer>
+
+<link rel="stylesheet" href="/style/noncritical.css">

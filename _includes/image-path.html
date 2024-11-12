@@ -1,0 +1,7 @@
+{%- if post -%}
+  {%- assign base_name = post.path | split: '/' | last | replace: '.md', '' -%}
+{%- else -%}
+  {%- assign base_name = page.path | split: '/' | last | replace: '.md', '' -%}
+{%- endif -%}
+{%- assign image_base_url = site.image_store | append: base_name | append: "/" -%}
+{{- image_base_url -}}

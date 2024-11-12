@@ -1,0 +1,55 @@
+{% comment %}
+  Jekyll's standard post-viewing logic lists all posts in reverse-
+  chronological order.
+
+  This script groups posts by year, outputting an H2 header above each group
+  of posts for that year. It simply checks if the year of the current post
+  is different from the year of the next (previous/older) post. If so,
+  it closes off the existing UL, outputs a new H2, and opens a new UL.
+{% endcomment %}
+
+{% if site.posts and site.posts.size != 0 %}
+
+  {% for post in site.posts %}
+
+    {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+    {% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
+
+    {% capture image_base_url %}{% include image-path.html post=post %}{% endcapture %}
+
+    {% if forloop.first %}
+      <h2 id="{{ this_year }}" class="text-align-center">{{this_year}}</h2>
+      <div class="album-list">
+    {% endif %}
+
+      <a href="{{ post.url }}" class="no-underline">
+
+        {% assign thumb_webp = post.cover | replace: "JPG", "webp" | replace: "jpg", "webp" %}
+
+        <div class="album-cover" style="background-image: url('{{ image_base_url }}thumbs/{{ thumb_webp }}');">
+          <div class="album-cover-text">
+            <div class="album-cover-text-inner">
+              <div class="album-cover-text-date">{{ post.date | date: "%m-%d" }}</div>
+              <div class="album-cover-text-title">{{ post.title }}</div>
+            </div><!--/.album-cover-text-inner-->
+          </div><!--/.album-text-->
+        </div>
+      </a>
+
+    {% if this_year != next_year %}
+      {% if next_year != "" %}
+        </div><!--/.album-list-->
+        <h2 id="{{ next_year }}" class="text-align-center">{{next_year}}</h2>
+        <div class="album-list">
+      {% endif %}
+    {% endif %}
+
+  {% endfor %}
+
+  </div><!--/.album-list-->
+
+{% else %}
+
+  <p>Sorry, there don't seem to be any posts to show you.</p>
+
+{% endif %}

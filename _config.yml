@@ -1,0 +1,75 @@
+# IF YOU CHANGE THIS FILE, BE SURE TO RESTART ANY RUNNING JEKYLL SERVE INSTANCES
+
+# --- PLUGINS ------------------------------------------------------------------
+
+plugins:
+  - jekyll-sitemap
+
+# --- SITE DATA ----------------------------------------------------------------
+
+# Site's title
+title: Bildaro Photo Gallery
+
+# Longer description
+description: Collection of photos hosted with Bildaro
+
+# Site's URL
+url: https://www.YOURDOMAIN.com
+
+image_store: https://YOURBUCKETNAMEGOESHERE.s3-us-west-2.amazonaws.com/
+zip_filename: download.zip
+
+home_header_title: Bildaro Photo Gallery
+home_header_image: YYYY-MM-DD-album-name-like-this/medium/DSC08426.webp
+
+author: Your Name
+
+project_name: Bildaro
+project_url: https://github.com/gaelanlloyd/bildaro
+
+# --- DEFAULTS -----------------------------------------------------------------
+
+# Set defaults for post types
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+# --- BUILD SETTINGS -----------------------------------------------------------
+
+markdown: kramdown
+
+# host: xxx.xxx.xxx.xxx
+# destination: /var/www/domain.com
+
+# Minifier settings
+compress_html:
+
+  # More aggressive
+  # clippings: all
+
+  # Less aggressive
+  blanklines: true
+
+  # Remove comments
+  comments:  ["<!-- ", " -->"]
+
+  # ignore:
+  # envs: [development]
+
+sass:
+  sass_dir: style
+  style: compressed
+
+exclude:
+  - README.md
+  - docker-compose.yml
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock

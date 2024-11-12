@@ -1,0 +1,26 @@
+<div class="image-gallery">
+
+  {% for image in page.pictures %}
+
+    {% capture image_base_url %}{% include image-path.html %}{% endcapture %}
+
+    {% assign image_webp = image | replace: "JPG", "webp" | replace: "jpg", "webp" %}
+
+    <a
+      class="image"
+      href="#"
+      onclick="modal_open(this)"
+      data-medium="{{ image_base_url }}medium/{{ image_webp }}"
+      data-full="{{ image_base_url }}{{ image }}"
+      >
+      <img
+        src="{{ image_base_url }}thumbs/{{ image_webp }}"
+        width="250"
+        height="250"
+        loading="lazy"
+      >
+    </a>
+
+  {% endfor %}
+
+</div>

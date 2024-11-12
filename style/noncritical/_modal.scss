@@ -1,0 +1,46 @@
+#modal {
+
+    position: fixed;
+    z-index: 9;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    background-color: rgb( 0, 0, 0 );
+    background-color: rgba( 0, 0, 0, 0.9 );
+
+    #modal-inner {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    img {
+        display: block;
+        border: 5px solid #000000;
+        max-width: 90%;
+        margin: 0 auto 1rem auto;
+    }
+
+    .controls,
+    .controls-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .controls-links {
+        gap: 1rem;
+    }
+
+    &, & a {
+        color: map-get( $colors, "white" );
+    }
+
+}

@@ -1,0 +1,27 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include head.html %}
+
+  <body>
+
+    <div class="body">
+
+      <div class="album-header" style="background-image: url('{{ site.image_store }}{{ site.home_header_image }}');">
+        <div class="album-header-inner">
+          <h1>{{ site.home_header_title }}</h1>
+        </div>
+      </div>
+
+      {{ content }}
+
+    </div>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

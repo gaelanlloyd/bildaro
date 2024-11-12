@@ -1,0 +1,32 @@
+footer {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    color: map-get( $colors, "white" );
+    padding: 2rem 1rem;
+
+    &, & a {
+        color: map-get( $colors, "white" );
+    }
+
+    p {
+        margin: 0;
+        text-align: center;
+    }
+
+}
+
+// --- NON-MOBILE --------------------------------------------------------------
+
+@media only screen and (min-width: $breakpoint-desktop) {
+
+    footer {
+        flex-direction: row;
+        gap: 3rem;
+    }
+
+}
