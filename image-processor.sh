@@ -112,12 +112,12 @@ for file in "${images[@]}"; do
 	webp_file=$(echo "$file" | sed -E 's/\.[jJ][pP][gG]$/.webp/')
 
     # Create thumbnails
-    command=("$processor $file -resize ${height_thumb}x${height_thumb}^ -gravity Center -extent ${height_thumb}x${height_thumb} -quality $quality_thumb $folder_thumb/$webp_file")
+    command=("$processor $file -auto-orient -strip -resize ${height_thumb}x${height_thumb}^ -gravity Center -extent ${height_thumb}x${height_thumb} -quality $quality_thumb $folder_thumb/$webp_file")
     # echo $command
     eval "$command"
 
     # Create medium sized images
-    command=("$processor $file -resize x${height_medium} -quality $quality_medium $folder_medium/$webp_file")
+    command=("$processor $file -auto-orient -strip -resize x${height_medium} -quality $quality_medium $folder_medium/$webp_file")
     # echo $command
     eval "$command"
 
