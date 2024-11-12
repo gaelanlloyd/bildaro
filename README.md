@@ -112,30 +112,30 @@ You can protect your S3 bucket from hotlinking by adding the following policy. I
 
 ```json
 {
-	"Version": "2008-10-17",
-	"Id": "Asset hotlink protection",
-	"Statement": [
-		{
-			"Sid": "Allow get requests only from authorized domains",
-			"Effect": "Allow",
-			"Principal": {
-				"AWS": "*"
-			},
-			"Action": "s3:GetObject",
-			"Resource": "arn:aws:s3:::YOURBUCKETNAMEGOESHERE/*",
-			"Condition": {
-				"StringLike": {
-					"aws:Referer": [
-						"http://localhost:4000/*",
-						"https://localhost:4000/*",
-						"http://127.0.0.1:4000/*",
-						"https://127.0.0.1:4000/*",
-						"https://www.YOURDOMAIN.com/*",
-					]
-				}
-			}
-		}
-	]
+  "Version": "2008-10-17",
+  "Id": "Asset hotlink protection",
+  "Statement": [
+    {
+      "Sid": "Allow get requests only from authorized domains",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::YOURBUCKETNAMEGOESHERE/*",
+      "Condition": {
+        "StringLike": {
+          "aws:Referer": [
+            "http://localhost:4000/*",
+            "https://localhost:4000/*",
+            "http://127.0.0.1:4000/*",
+            "https://127.0.0.1:4000/*",
+            "https://www.YOURDOMAIN.com/*",
+          ]
+        }
+      }
+    }
+  ]
 }
 ```
 
@@ -145,40 +145,40 @@ For higher security, limit `aws cli` to a user that only has write access to the
 
 ```json
 {
- 	"Version": "2012-10-17",
-   "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "s3:ListAllMyBuckets"
-            ],
-            "Resource": "arn:aws:s3:::*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "s3:ListBucket",
-                "s3:GetBucketLocation",
-                "s3:AbortMultipartUpload",
-                "s3:GetBucketPolicy",
-                "s3:GetObject",
-                "s3:PutObject"
-            ],
-            "Resource": "arn:aws:s3:::YOURBUCKETNAMEGOESHERE"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "s3:ListBucket",
-                "s3:GetBucketLocation",
-                "s3:AbortMultipartUpload",
-                "s3:GetBucketPolicy",
-                "s3:GetObject",
-                "s3:PutObject"
-            ],
-            "Resource": "arn:aws:s3:::YOURBUCKETNAMEGOESHERE/*"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+        "Effect": "Allow",
+        "Action": [
+            "s3:ListAllMyBuckets"
+        ],
+        "Resource": "arn:aws:s3:::*"
+    },
+    {
+        "Effect": "Allow",
+        "Action": [
+            "s3:ListBucket",
+            "s3:GetBucketLocation",
+            "s3:AbortMultipartUpload",
+            "s3:GetBucketPolicy",
+            "s3:GetObject",
+            "s3:PutObject"
+        ],
+        "Resource": "arn:aws:s3:::YOURBUCKETNAMEGOESHERE"
+    },
+    {
+        "Effect": "Allow",
+        "Action": [
+            "s3:ListBucket",
+            "s3:GetBucketLocation",
+            "s3:AbortMultipartUpload",
+            "s3:GetBucketPolicy",
+            "s3:GetObject",
+            "s3:PutObject"
+        ],
+        "Resource": "arn:aws:s3:::YOURBUCKETNAMEGOESHERE/*"
+    }
+  ]
 }
 ```
 
