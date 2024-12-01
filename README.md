@@ -90,9 +90,9 @@ Edit the new post:
 - Change the album title
 - Change the album cover
 
-To make the album private (unlisted):
-- Prepend a `_` to the album's filename (`_YYYY-MM-DD-album-name-like-this.md`)
+To make the album private (unlisted), move the album post to the `_private` folder.
 - NOTE: This doesn't make the album completely hidden or password protected, it just removes it from the album listings, sitemap, etc. Anyone with the album URL will be able to see the album.
+- The album will be available under the `/private/` path instead of `/album/` using the same naming convention as other albums.
 
 Spin up and serve the site locally to review the new album:
 
