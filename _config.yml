@@ -31,7 +31,7 @@ project_url: https://github.com/gaelanlloyd/bildaro
 
 # Set default permalinks
 
-permalink: /gallery/:year-:month-:day-:title/
+permalink: /album/:year-:month-:day-:title/
 
 # Set defaults for post types
 
