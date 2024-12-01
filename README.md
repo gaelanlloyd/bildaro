@@ -34,6 +34,16 @@ Check out [my personal photo gallery](https://photos.gaelanlloyd.com) to see Bil
   - Creates an album post with a list of all the images
 - RSS feed advertises your gallery's activity
 
+## Change log
+
+Major functionality changes are listed here. Smaller changes are documented in the repo commit log.
+
+- 2024-11-30
+  - Fixed private image support (now their own post collection).
+  - Added modal previous/next image browsing capability, with keyboard support.
+- 2024-11-12
+  - Initial release
+
 ## Dependencies
 
 - `imagemagick` via `magick` (Mac: `brew install imagemagick`)
