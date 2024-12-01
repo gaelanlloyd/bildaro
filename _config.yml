@@ -42,6 +42,19 @@ defaults:
       type: posts
     values:
       layout: post
+  -
+    scope:
+      path: ""
+      type: private
+    values:
+      layout: post
+
+# --- COLLECTIONS --------------------------------------------------------------
+
+collections:
+ private:
+  output: true
+  permalink: /private/:year-:month-:day-:title/
 
 # --- BUILD SETTINGS -----------------------------------------------------------
 
