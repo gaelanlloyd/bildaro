@@ -29,10 +29,17 @@
     .controls,
     .controls-links {
         display: flex;
-        flex-direction: row;
         justify-content: center;
         align-items: center;
         gap: 2rem;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .controls-links {
+        flex-direction: row;
     }
 
     .controls-links {
@@ -41,6 +48,16 @@
 
     &, & a {
         color: map-get( $colors, "white" );
+    }
+
+}
+
+// --- NON-MOBILE --------------------------------------------------------------
+
+@media only screen and (min-width: $breakpoint-desktop) {
+
+    #modal .controls {
+        flex-direction: row;
     }
 
 }

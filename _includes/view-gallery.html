@@ -6,12 +6,33 @@
 
     {% assign image_webp = image | replace: "JPG", "webp" | replace: "jpg", "webp" %}
 
+    {% assign image_id = image | split: "." | slice: 0, -1 | join: "." %}
+
+    {%- if forloop.index > 1 -%}
+      {% assign prev = forloop.index | minus: 1 %}
+    {%- else -%}
+      {% assign prev = 0 %}
+    {%- endif -%}
+
+    {%- if forloop.index < forloop.length -%}
+      {% assign next = forloop.index | plus: 1 %}
+    {%- else -%}
+      {% assign next = 0 %}
+    {%- endif -%}
+
     <a
+      id="{{ forloop.index }}"
       class="image"
       href="#"
       onclick="modal_open(this)"
       data-medium="{{ image_base_url }}medium/{{ image_webp }}"
       data-full="{{ image_base_url }}{{ image }}"
+      {% unless prev == 0 %}
+        data-prev="{{ prev }}"
+      {% endunless %}
+      {% unless next == 0 %}
+        data-next="{{ next }}"
+      {% endunless %}
       >
       <img
         src="{{ image_base_url }}thumbs/{{ image_webp }}"

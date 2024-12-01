@@ -7,6 +7,7 @@ $colors: (
     "gray-81": #303030,
     "button": #0099FF,
     "button-dark": #005C99,
+    "button-disabled": #555555,
 );
 
 $breakpoint-desktop: 600px;
@@ -62,4 +63,15 @@ button,
     &:hover {
         background-color: map-get( $colors, "button-dark" );
     }
+
+    &:disabled {
+
+        background-color: map-get( $colors, "button-disabled" );
+        cursor: default;
+
+        &:hover {
+            background-color: map-get( $colors, "button-disabled" );
+        }
+    }
+
 }
