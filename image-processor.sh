@@ -105,9 +105,12 @@ mkdir "$path/medium"
 
 # Iterate over each image and perform transformations
 
+i=1
+count=${#images[@]}
+
 for file in "${images[@]}"; do
 
-    echo "Processing $file"
+    echo "Processing $i/$count $file"
 
 	webp_file=$(echo "$file" | sed -E 's/\.[jJ][pP][gG]$/.webp/')
 
@@ -120,6 +123,8 @@ for file in "${images[@]}"; do
     command=("$processor $file -auto-orient -strip -resize x${height_medium} -quality $quality_medium $folder_medium/$webp_file")
     # echo $command
     eval "$command"
+
+	((i++))
 
 done
 
