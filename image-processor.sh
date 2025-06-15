@@ -141,7 +141,7 @@ eval "$command"
 
 post_file="_posts/${path_basename}.md"
 
-echo "Creating post: $post_file"
+echo "Creating post: $SITE_PATH/$post_file"
 
 # Return t
 cd $SITE_PATH || { echo "Failed to change directory to [$SITE_PATH]"; exit 1; }
