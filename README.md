@@ -8,9 +8,9 @@ It also includes a handy image processor tool that creates resized images for yo
 
 Bildaro, powered by Jekyll and AWS, allows you to host your own serverless photo gallery and pay a fraction of the cost of other hosted galleries. The estimated monthly cost for storing 1 GB of photos and serving 10 GB of traffic is about $2/month!
 
-Since Bildaro is serverless, there's no software to provision or maintain, no SSL certs to manage, no databse to lock down, and no site for anyone to hack. Just a slick, easy to use, free to customize photo gallery to suit your needs!
+Since Bildaro is serverless, there's no software to provision or maintain, no SSL certs to manage, no database to lock down, and no site for anyone to hack. Just a slick, easy to use, free to customize photo gallery to suit your needs!
 
-*Bildaro* is the Esperanto word for *a collection of images*.
+*Bildaro* is the Esperanto word meaning "a collection of images."
 
 ## Demo
 
@@ -19,7 +19,7 @@ Check out [my personal photo gallery](https://photos.gaelanlloyd.com) to see Bil
 ## Features
 
 - Completely static, maintenance-free, serverless web photo gallery
-- Simple as can be: no package managers or complicated third-party libraries
+- Simple: no package managers or complicated third-party libraries
 - Teeny tiny
   - 1.3 KB homepage
   - 1.8 KB CSS (split in critical and non-critical styles)
@@ -29,7 +29,7 @@ Check out [my personal photo gallery](https://photos.gaelanlloyd.com) to see Bil
   - One-click download of ZIP containing original album image files
 - Image processor handles your photos
   - Creates thumbnails and medium-sized images in modern, efficient `webp` format
-  - Creates the album download ZIP (includes all full-sized `jpg` images)
+  - Creates the album download ZIP of all the full-sized `jpg` images
   - Uploads everything to your AWS S3 bucket for you
   - Creates an album post with a list of all the images
 - RSS feed advertises your gallery's activity
@@ -38,11 +38,14 @@ Check out [my personal photo gallery](https://photos.gaelanlloyd.com) to see Bil
 
 Major functionality changes are listed here. Smaller changes are documented in the repo commit log.
 
+- 2025-06-16
+  - UX improvements (buttons stay in the same place as you navigate between photos).
+  - Progress reporting during batch image processing.
 - 2024-11-30
   - Fixed private image support (now their own post collection).
   - Added modal previous/next image browsing capability, with keyboard support.
 - 2024-11-12
-  - Initial release
+  - Initial release.
 
 ## Dependencies
 
