@@ -19,6 +19,13 @@
         justify-content: center;
     }
 
+    #modal-image {
+        display: flex;
+        flex-grow: 1;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+
     img {
         display: block;
         border: 5px solid #000000;
@@ -26,23 +33,34 @@
         margin: 0 auto 1rem auto;
     }
 
-    .controls,
-    .controls-links {
+    #modal-controls,
+    #modal-controls-links {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 2rem;
+        gap: 1rem;
     }
 
-    .controls {
+    #modal-controls {
+        flex-shrink: 1;
         flex-direction: column;
+        padding: 0 0 1rem 0;
     }
 
-    .controls-links {
+    #modal-controls-links a {
+        display: flex;
         flex-direction: row;
+        gap: 1rem;
     }
 
-    .controls-links {
+    #modal-controls-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    #modal-controls-links {
+        flex-direction: row;
         gap: 1rem;
     }
 
@@ -56,7 +74,7 @@
 
 @media only screen and (min-width: $breakpoint-desktop) {
 
-    #modal .controls {
+    #modal-controls {
         flex-direction: row;
     }
 
