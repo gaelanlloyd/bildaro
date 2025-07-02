@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-path=$1
+action=$1
+
+path=$2
 
 images=()
 
@@ -22,6 +24,16 @@ folder_medium="medium"
 
 zip_file="download.zip"
 
+if [ "$action" = "adhoc" ]; then
+	make_zip=false
+	upload_to_s3=false
+	create_manifest=false
+else
+	make_zip=true
+	upload_to_s3=true
+	create_manifest=true
+fi
+
 # Load in the environment variables
 source env.sh
 
@@ -32,8 +44,10 @@ if [ $# -eq 0 ]; then
 	echo ""
 	echo "ERROR: No parameters given."
 	echo ""
-	echo "Proper syntax :"
-	echo "  ./image-processor.sh [image-path]"
+	echo "Proper syntax:"
+	echo "  ./image-processor.sh [action] [album-path]"
+	echo ""
+	echo "Actions: create | adhoc"
 	echo ""
 	exit 1
 fi
@@ -77,6 +91,11 @@ if [ ! "$IMAGE_PROCESSOR_S3_BUCKET" ]; then
 	echo ""
 	exit 1
 fi
+
+# --- DEBUG --------------------------------------------------------------------
+
+echo "Action: [$action]"
+echo ""
 
 # ------------------------------------------------------------------------------
 
@@ -130,46 +149,79 @@ done
 
 # --- CREATE DOWNLOAD ZIP ------------------------------------------------------
 
-echo "Creating full-size image ZIP download file"
+if [ "$make_zip" = true ] ; then
 
-zip "$zip_file" "${images[@]}" -q
+	echo "Creating full-size image ZIP download file"
+	zip "$zip_file" "${images[@]}" -q
+	zip_filesize="$(du -k "$zip_file" | cut -f1)"
 
-zip_filesize="$(du -k "$zip_file" | cut -f1)"
+fi
 
 # --- UPLOAD TO S3 -------------------------------------------------------------
 
-command=("aws s3 cp \"$path\" s3://$IMAGE_PROCESSOR_S3_BUCKET/$path_basename --recursive --exclude \".DS_Store\"")
-# echo $command
-eval "$command"
+if [ "$upload_to_s3" = true ]; then
+
+	command=("aws s3 cp \"$path\" s3://$IMAGE_PROCESSOR_S3_BUCKET/$path_basename --recursive --exclude \".DS_Store\"")
+	echo $command
+	# eval "$command"
+
+fi
 
 # --- CREATE YAML MANIFEST -----------------------------------------------------
 
-post_file="_posts/${path_basename}.md"
+if [ "$create_manifest" = true ]; then
 
-echo "Creating post: $SITE_PATH/$post_file"
+	post_file="_posts/${path_basename}.md"
 
-# Return t
-cd $SITE_PATH || { echo "Failed to change directory to [$SITE_PATH]"; exit 1; }
+	echo "Creating post: $SITE_PATH/$post_file"
 
-# Clear the file if it exists (first echo line is single >)
-echo "---" > $post_file
+	# Return t
+	cd $SITE_PATH || { echo "Failed to change directory to [$SITE_PATH]"; exit 1; }
 
-echo "title: $path_basename" >> $post_file
-echo "cover: ${images[0]}" >> $post_file
-echo "download_size: $zip_filesize" >> $post_file
-echo "pictures:" >> $post_file
+	# Clear the file if it exists (first echo line is single >)
+	echo "---" > $post_file
 
-for file in "${images[@]}"; do
-    echo "  - $file" >> $post_file
-done
+	echo "title: $path_basename" >> $post_file
+	echo "cover: ${images[0]}" >> $post_file
+	echo "download_size: $zip_filesize" >> $post_file
+	echo "pictures:" >> $post_file
 
-echo "---" >> $post_file
+	for file in "${images[@]}"; do
+		echo "  - $file" >> $post_file
+	done
 
-echo "" >> $post_file
+	echo "---" >> $post_file
+
+	echo "" >> $post_file
+
+fi
 
 # ------------------------------------------------------------------------------
 
-echo ""
-echo "All set!"
-echo "Make any changes you want to the post, then commit the changes to the repo to deploy!"
-echo ""
+
+if [ "$action" = "adhoc" ]; then
+
+	echo ""
+	echo "Adhoc images ready."
+	echo ""
+	echo "Todo:"
+	echo "[ ] Upload the files to S3."
+	echo "[ ] Ensure the album post doesn't have the 'download_size' front matter variable defined."
+	echo "[ ] Add these filenames to your album's post front matter manually:"
+	echo ""
+
+	for file in "${images[@]}"; do
+		echo "  - $file"
+	done
+
+	echo ""
+
+else
+
+	echo ""
+	echo "All set!"
+	echo "Draft post created."
+	echo "Adjust it as necessary, then commit and push the changes to the repo to deploy your album."
+	echo ""
+
+fi
