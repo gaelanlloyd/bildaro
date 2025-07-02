@@ -32,12 +32,15 @@ Check out [my personal photo gallery](https://photos.gaelanlloyd.com) to see Bil
   - Creates the album download ZIP of all the full-sized `jpg` images
   - Uploads everything to your AWS S3 bucket for you
   - Creates an album post with a list of all the images
+  - BETA: Ad-hoc album mode.
 - RSS feed advertises your gallery's activity
 
 ## Change log
 
 Major functionality changes are listed here. Smaller changes are documented in the repo commit log.
 
+- 2025-07-02
+  - BETA: Image processor renamed and now provides ad-hoc gallery support, useful for albums that get new images over time.
 - 2025-06-16
   - UX improvements (buttons stay in the same place as you navigate between photos).
   - Progress reporting during batch image processing.
@@ -106,6 +109,16 @@ Edit the new post:
 To make the album private (unlisted), move the album post to the `_private` folder.
 - NOTE: This doesn't make the album completely hidden or password protected, it just removes it from the album listings, sitemap, etc. Anyone with the album URL will be able to see the album.
 - The album will be available under the `/private/` path instead of `/album/` using the same naming convention as other albums.
+
+To create an `adhoc` album (no `ZIP`, no `YAML` file):
+- This is useful if you want to simply prepare images to be added into an ad-hoc, catch-all album that you'll add images to over time.
+- The album processor will simply create the `thumb` and `medium` image sizes for you, and give you a YAML manifest of image filenames to add to your post manually.
+- You'll need to upload the files to S3 manually.
+- NOTE: The album processor will not create or update the `download.zip` file for ad-hoc albums. If you want to, you can manage this file manually.
+
+```bash
+./process-album.sh [adhoc] [/your/album/folder]
+```
 
 Spin up and serve the site locally to review the new album:
 
