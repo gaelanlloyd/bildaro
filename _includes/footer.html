@@ -4,7 +4,7 @@
         <div><a class="button" href="/">Back to albums</a></div>
     {% endif %}
 
-    <div>Photography &copy; {{ 'now' | date: "%Y" }} {{ site.author }}</div>
+    <div>Photography &copy; {{ 'now' | date: "%Y" }} <a href="{{ site.author_url }}">{{ site.author }}</a></div>
 
     <div>Created using <a href="{{ site.project_url }}">{{ site.project_name }}</a></div>
 

@@ -23,6 +23,7 @@ home_header_title: Bildaro Photo Gallery
 home_header_image: YYYY-MM-DD-album-name-like-this/medium/DSC08426.webp
 
 author: Your Name
+author_url: https://www.your-website.com
 
 project_name: Bildaro
 project_url: https://github.com/gaelanlloyd/bildaro
