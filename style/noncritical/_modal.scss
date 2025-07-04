@@ -1,3 +1,6 @@
+@use "sass:map";
+@use '../critical/theme';
+
 #modal {
 
     position: fixed;
@@ -65,14 +68,14 @@
     }
 
     &, & a {
-        color: map-get( $colors, "white" );
+        color: map.get( theme.$colors, "white" );
     }
 
 }
 
 // --- NON-MOBILE --------------------------------------------------------------
 
-@media only screen and (min-width: $breakpoint-desktop) {
+@media only screen and (min-width: theme.$breakpoint-desktop) {
 
     #modal-controls {
         flex-direction: row;

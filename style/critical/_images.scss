@@ -1,3 +1,6 @@
+@use "sass:map";
+@use './theme';
+
 .album-list,
 .image-gallery {
 
@@ -17,7 +20,7 @@
     width: 250px;
     height: 250px;
     margin: 0 auto;
-    border: 1px solid map-get( $colors, "gray-81" );
+    border: 1px solid map.get( theme.$colors, "gray-81" );
 
     .album-cover-text {
 
@@ -32,8 +35,8 @@
             background-color: rgba( 0, 0, 0, 0.6 );
         }
 
-        color: map-get( $colors, "white" );
-        text-shadow: 1px 1px map-get( $colors, "black" );
+        color: map.get( theme.$colors, "white" );
+        text-shadow: 1px 1px map.get( theme.$colors, "black" );
 
         .album-cover-text-date {
             font-size: 12px;
@@ -64,8 +67,8 @@
     }
 
     h1, div, p {
-        color: map-get( $colors, "white" );
-        text-shadow: 1px 1px map-get( $colors, "black" );
+        color: map.get( theme.$colors, "white" );
+        text-shadow: 1px 1px map.get( theme.$colors, "black" );
     }
 
     h1 {
@@ -86,13 +89,13 @@
     align-items: center;
 
     img {
-        border: 1px solid map-get( $colors, "gray-81" );
+        border: 1px solid map.get( theme.$colors, "gray-81" );
     }
 }
 
 // --- NON-MOBILE --------------------------------------------------------------
 
-@media only screen and (min-width: $breakpoint-desktop) {
+@media only screen and (min-width: theme.$breakpoint-desktop) {
 
     .album-list,
     .image-gallery {

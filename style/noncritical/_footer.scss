@@ -1,3 +1,6 @@
+@use "sass:map";
+@use '../critical/theme';
+
 footer {
 
     display: flex;
@@ -6,11 +9,11 @@ footer {
     align-items: center;
     gap: 1rem;
 
-    color: map-get( $colors, "white" );
+    color: map.get( theme.$colors, "white" );
     padding: 2rem 1rem;
 
     &, & a {
-        color: map-get( $colors, "white" );
+        color: map.get( theme.$colors, "white" );
     }
 
     p {
@@ -22,7 +25,7 @@ footer {
 
 // --- NON-MOBILE --------------------------------------------------------------
 
-@media only screen and (min-width: $breakpoint-desktop) {
+@media only screen and (min-width: theme.$breakpoint-desktop) {
 
     footer {
         flex-direction: row;

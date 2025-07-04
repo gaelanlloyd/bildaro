@@ -1,5 +1,7 @@
+@use './theme';
+
 body, input, textarea {
-    font-family: $fonts-sans;
+    font-family: theme.$fonts-sans;
     line-height: 1.333rem;
 }
 

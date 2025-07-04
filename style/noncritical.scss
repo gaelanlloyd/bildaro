@@ -2,7 +2,7 @@
 ---
 
 // Required in all top-level SCSS files to bring in colors, fonts, etc.
-@import "critical/base/theme";
+@forward "critical/theme";
 
-@import "noncritical/footer";
-@import "noncritical/modal";
+@forward "noncritical/footer";
+@forward "noncritical/modal";

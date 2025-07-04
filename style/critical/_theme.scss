@@ -1,10 +1,14 @@
+@use "sass:map";
+
 $fonts-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
 $colors: (
     "text": #272727,
     "white": #FFFFFF,
     "black": #000000,
-    "gray-81": #303030,
+    "gray-15": #262626,
+    "gray-19": #303030,
+    "gray-47": #777777,
     "button": #0099FF,
     "button-dark": #005C99,
     "button-disabled": #555555,
@@ -15,7 +19,8 @@ $breakpoint-desktop: 600px;
 body {
     padding: 0;
     margin: 0;
-    background-color: map-get( $colors, "gray-81" );
+    background-color: map.get( $colors, "gray-19" );
+    color: map.get( $colors, "gray-47" );
 }
 
 header {
@@ -40,7 +45,7 @@ ul.nav {
 
 .body {
     padding: 0 0 2rem 0;
-    background-color: map-get( $colors, "white" );
+    background-color: map.get( $colors, "gray-15" );
 }
 
 a.no-underline {
@@ -52,8 +57,8 @@ button,
 
     display: inline-block;
     padding: 10px 20px;
-    background-color: map-get( $colors, "button" );
-    color: map-get( $colors, "white" );
+    background-color: map.get( $colors, "button" );
+    color: map.get( $colors, "white" );
     border: none;
     border-radius: 10px;
     font-weight: bold;
@@ -61,16 +66,16 @@ button,
     cursor: pointer;
 
     &:hover {
-        background-color: map-get( $colors, "button-dark" );
+        background-color: map.get( $colors, "button-dark" );
     }
 
     &:disabled {
 
-        background-color: map-get( $colors, "button-disabled" );
+        background-color: map.get( $colors, "button-disabled" );
         cursor: default;
 
         &:hover {
-            background-color: map-get( $colors, "button-disabled" );
+            background-color: map.get( $colors, "button-disabled" );
         }
     }
 
