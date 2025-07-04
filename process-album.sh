@@ -162,8 +162,8 @@ fi
 if [ "$upload_to_s3" = true ]; then
 
 	command=("aws s3 cp \"$path\" s3://$IMAGE_PROCESSOR_S3_BUCKET/$path_basename --recursive --exclude \".DS_Store\"")
-	echo $command
-	# eval "$command"
+	# echo $command
+	eval "$command"
 
 fi
 
