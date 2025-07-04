@@ -9,6 +9,7 @@ $colors: (
     "gray-15": #262626,
     "gray-19": #303030,
     "gray-47": #777777,
+    "gray-63": #A3A3A3,
     "button": #0099FF,
     "button-dark": #005C99,
     "button-disabled": #555555,
@@ -19,8 +20,8 @@ $breakpoint-desktop: 600px;
 body {
     padding: 0;
     margin: 0;
-    background-color: map.get( $colors, "gray-19" );
-    color: map.get( $colors, "gray-47" );
+    background-color: map.get( $colors, "gray-15" );
+    color: map.get( $colors, "white" );
 }
 
 header {
@@ -44,8 +45,7 @@ ul.nav {
 }
 
 .body {
-    padding: 0 0 2rem 0;
-    background-color: map.get( $colors, "gray-15" );
+    background-color: map.get( $colors, "gray-19" );
 }
 
 a.no-underline {

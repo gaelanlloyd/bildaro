@@ -4,7 +4,7 @@ Bildaro is a mobile-friendly photo gallery using affordable, serverless storage 
 
 It also includes a handy image processor tool that creates resized images for you and uploads album assets to S3.
 
-![Bildaro: Album example](/docs/images/screenshot-01.webp?raw=true "Bildaro: Photo album example")
+![Bildaro: Album example](/docs/images/screenshot-02.webp?raw=true "Bildaro: Photo album example")
 
 Bildaro, powered by Jekyll and AWS, allows you to host your own serverless photo gallery and pay a fraction of the cost of other hosted galleries. The estimated monthly cost for storing 1 GB of photos and serving 10 GB of traffic is about $2/month!
 
@@ -37,8 +37,12 @@ Check out [my personal photo gallery](https://photos.gaelanlloyd.com) to see Bil
 
 ## Change log
 
-Major functionality changes are listed here. Smaller changes are documented in the repo commit log.
+Major functionality changes are listed here. Smaller changes can be seen in the repo commits.
 
+- 2025-07-04
+  - Migrate to Dart Sass v3 syntax.
+  - New dark background.
+  - New desktop album browser layout.
 - 2025-07-02
   - BETA: Image processor renamed and now provides ad-hoc gallery support, useful for albums that get new images over time.
 - 2025-06-16
@@ -210,4 +214,4 @@ For higher security, limit `aws cli` to a user that only has write access to the
 
 ## Author
 
-Bildaro was created in 2024 by [Gaelan Lloyd](https://www.gaelanlloyd.com) on a drizzly Seattle Sunday and is provided to you via the MIT license.
+Bildaro was created in 2024 by [Gaelan Lloyd](https://www.gaelanlloyd.com) on a drizzly Seattle Sunday. This software is provided to you via the permissive MIT license.
