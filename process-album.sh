@@ -37,26 +37,32 @@ fi
 # Load in the environment variables
 source env.sh
 
-# --- CHECK FOR ERRORS ---------------------------------------------------------
+# --- FUNCTIONS ----------------------------------------------------------------
 
-# Check if no parameters were provided
-if [ $# -eq 0 ]; then
-	echo ""
-	echo "ERROR: No parameters given."
+write_help() {
 	echo ""
 	echo "Proper syntax:"
 	echo "  ./image-processor.sh [action] [album-path]"
 	echo ""
 	echo "Actions: create | adhoc"
 	echo ""
+}
+
+# --- CHECK FOR ERRORS ---------------------------------------------------------
+
+# Check if no parameters were provided
+if [ $# -eq 0 ]; then
+	echo ""
+	echo "ERROR: No parameters given."
+	write_help
 	exit 1
 fi
 
 # Ensure path exists
 if [ ! -e "$path" ]; then
 	echo ""
-	echo "ERROR: [$path] does not exist."
-	echo ""
+	echo "ERROR: Source path [$path] does not exist."
+	write_help
 	exit 1
 fi
 
