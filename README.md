@@ -103,7 +103,7 @@ Run the image processor on that folder. The script will:
 - Creates an album post under `_posts` with a list of all the images
 
 ```bash
-./process-album.sh /your/folder/name
+./process-album.sh create [/your/folder/name]
 ```
 
 Edit the new post:
@@ -121,7 +121,7 @@ To create an `adhoc` album (no `ZIP`, no `YAML` file):
 - NOTE: The album processor will not create or update the `download.zip` file for ad-hoc albums. If you want to, you can manage this file manually.
 
 ```bash
-./process-album.sh [adhoc] [/your/album/folder]
+./process-album.sh adhoc [/your/album/folder]
 ```
 
 Spin up and serve the site locally to review the new album:
