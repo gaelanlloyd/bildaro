@@ -103,7 +103,7 @@ Run the image processor on that folder. The script will:
 - Creates an album post under `_posts` with a list of all the images
 
 ```bash
-./image-processor.sh /your/folder/name
+./process-album.sh /your/folder/name
 ```
 
 Edit the new post:
