@@ -138,6 +138,9 @@ Once you see the images up on the gallery, you can delete the temporary image wo
 
 ### Preventing image hotlinking
 
+> [!NOTE]
+> The policy below needs review. It was preventing mobile browsers from accessing the original image files.
+
 You can protect your S3 bucket from hotlinking by adding the following policy. It'll help ensure that images added to the bucket aren't directly served from other sites, which could incur large bandwidth fees.
 
 ```json
