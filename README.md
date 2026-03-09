@@ -140,6 +140,8 @@ Once you see the images up on the gallery, you can delete the temporary image wo
 
 You can protect your S3 bucket from hotlinking by adding the following policy. It'll help ensure that images added to the bucket aren't directly served from other sites, which could incur large bandwidth fees.
 
+NOTE: To help fix issues with mobile devices that strip off `referrer` headers, this has been changed to a "lighter" block policy. Direct downloads are allowed, but downloads that include a referrer but don't match the allowed domains list will be blocked.
+
 ```json
 {
   "Version": "2008-10-17",
@@ -178,35 +180,31 @@ For higher security, limit `aws cli` to a user that only has write access to the
   "Version": "2012-10-17",
   "Statement": [
     {
-        "Effect": "Allow",
-        "Action": [
-            "s3:ListAllMyBuckets"
-        ],
-        "Resource": "arn:aws:s3:::*"
+      "Sid": "AllowAllPublicRead",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::YOURBUCKETNAMEGOESHERE/*"
     },
     {
-        "Effect": "Allow",
-        "Action": [
-            "s3:ListBucket",
-            "s3:GetBucketLocation",
-            "s3:AbortMultipartUpload",
-            "s3:GetBucketPolicy",
-            "s3:GetObject",
-            "s3:PutObject"
-        ],
-        "Resource": "arn:aws:s3:::YOURBUCKETNAMEGOESHERE"
-    },
-    {
-        "Effect": "Allow",
-        "Action": [
-            "s3:ListBucket",
-            "s3:GetBucketLocation",
-            "s3:AbortMultipartUpload",
-            "s3:GetBucketPolicy",
-            "s3:GetObject",
-            "s3:PutObject"
-        ],
-        "Resource": "arn:aws:s3:::YOURBUCKETNAMEGOESHERE/*"
+      "Sid": "DenyHotlinkersWithBadReferer",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::YOURBUCKETNAMEGOESHERE/*",
+      "Condition": {
+        "StringNotLike": {
+          "aws:Referer": [
+            "https://www.YOURDOMAIN.com/*",
+            "https://YOURDOMAIN.com/*",
+            "http://localhost:4000/*",
+            "https://localhost:4000/*",
+            "http://127.0.0.1:4000/*",
+            "https://127.0.0.1:4000/*"
+          ]
+        },
+        "Null": { "aws:Referer": "false" }
+      }
     }
   ]
 }
