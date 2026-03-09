@@ -95,7 +95,7 @@ In a temporary path on your system, create a folder containing the photos you wa
   - It's important to use that naming scheme. Jekyll will use it to gather the album date and title, and the folder storing the images will also be named that in S3.
 - Add photos directly to that folder (currently only `JPG` or `jpg` are supported).
 
-Run the image processor on that folder. The script will:
+From inside your Bildaro root folder, run the image processor and point to that temporary folder. The script will:
 - Create thumbnails (250px x 250px center-weighted cropped)
 - Create medium sized images for in-browser viewing (800px high x proportional width)
 - Creates a ZIP file containing all original sized images for one-click album downloads
@@ -137,6 +137,9 @@ Once you see the images up on the gallery, you can delete the temporary image wo
 ## Notes
 
 ### Preventing image hotlinking
+
+> [!NOTE]
+> The policy below needs review. It was preventing mobile browsers from accessing the original image files.
 
 You can protect your S3 bucket from hotlinking by adding the following policy. It'll help ensure that images added to the bucket aren't directly served from other sites, which could incur large bandwidth fees.
 
