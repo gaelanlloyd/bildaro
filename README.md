@@ -138,11 +138,9 @@ Once you see the images up on the gallery, you can delete the temporary image wo
 ### Preventing image hotlinking
 
 > [!NOTE]
-> The policy below needs review. It was preventing mobile browsers from accessing the original image files.
+> To help fix issues with mobile devices that strip off `referrer` headers, this has been changed to a "lighter" block policy. Direct downloads are allowed, but downloads that include a referrer but don't match the allowed domains list will be blocked.
 
 You can protect your S3 bucket from hotlinking by adding the following policy. It'll help ensure that images added to the bucket aren't directly served from other sites, which could incur large bandwidth fees.
-
-NOTE: To help fix issues with mobile devices that strip off `referrer` headers, this has been changed to a "lighter" block policy. Direct downloads are allowed, but downloads that include a referrer but don't match the allowed domains list will be blocked.
 
 ```json
 {
