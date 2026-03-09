@@ -12,6 +12,7 @@ extensions=(
 )
 
 processor="magick"
+awscli="${awscli:-aws}"
 
 height_thumb="250"
 height_medium="800"
@@ -72,6 +73,20 @@ if ! command -v "$processor" >/dev/null 2>&1; then
 	echo "ERROR: [$processor] is not installed or is not avilable in this path."
 	echo ""
 	exit 1
+fi
+
+# Ensure that awscli exists
+if ! command -v "$awscli" >/dev/null 2>&1; then
+	echo ""
+	echo "ERROR: [$awscli] is not installed or is not avilable in this path."
+	echo ""
+	exit 1
+fi
+
+# Ensure that awscli actually runs
+if ! "$awscli" --version >/dev/null 2>&1; then
+  echo "Error: [$awscli] is installed but not working." >&2
+  exit 1
 fi
 
 # Ensure .env file exists
@@ -167,7 +182,7 @@ fi
 
 if [ "$upload_to_s3" = true ]; then
 
-	command=("aws s3 cp \"$path\" s3://$IMAGE_PROCESSOR_S3_BUCKET/$path_basename --recursive --exclude \".DS_Store\"")
+	command=("$awscli s3 cp \"$path\" s3://$IMAGE_PROCESSOR_S3_BUCKET/$path_basename --recursive --exclude \".DS_Store\"")
 	# echo $command
 	eval "$command"
 
