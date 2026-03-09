@@ -57,8 +57,7 @@ Major functionality changes are listed here. Smaller changes can be seen in the 
 ## Dependencies
 
 - `imagemagick` via `magick` (Mac: `brew install imagemagick`)
-- `pip` (Mac: `brew install pipx`)
-- `awscli` (Mac: `pipx install awscli`)
+- `awscli` (Mac: `brew install awscli`)
   - Configure `awscli` with the creds created in the next step
 - `ruby` and these gems:
   - `jekyll`
