@@ -95,7 +95,7 @@ In a temporary path on your system, create a folder containing the photos you wa
   - It's important to use that naming scheme. Jekyll will use it to gather the album date and title, and the folder storing the images will also be named that in S3.
 - Add photos directly to that folder (currently only `JPG` or `jpg` are supported).
 
-Run the image processor on that folder. The script will:
+From inside your Bildaro root folder, run the image processor and point to that temporary folder. The script will:
 - Create thumbnails (250px x 250px center-weighted cropped)
 - Create medium sized images for in-browser viewing (800px high x proportional width)
 - Creates a ZIP file containing all original sized images for one-click album downloads
