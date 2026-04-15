@@ -49,6 +49,7 @@ defaults:
       type: private
     values:
       layout: post
+      sitemap: false
 
 # --- COLLECTIONS --------------------------------------------------------------
 
